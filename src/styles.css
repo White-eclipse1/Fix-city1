@@ -231,8 +231,14 @@ button {
 }
 
 .map-view__texture {
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(5, 28, 42, 0.18));
+}
+
+.map-view__texture-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
   transform: scale(1.05);
 }
 

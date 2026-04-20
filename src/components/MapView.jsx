@@ -10,11 +10,15 @@ function MapView({
 }) {
   return (
     <div className="map-view">
-      <div
-        className="map-view__texture"
-        style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.14), rgba(5, 28, 42, 0.18)), url(${mapSurface})` }}
-        aria-hidden="true"
-      />
+      <div className="map-view__texture" aria-hidden="true">
+        <img
+          className="map-view__texture-image"
+          src={mapSurface}
+          alt=""
+          loading="eager"
+          decoding="async"
+        />
+      </div>
 
       <div className="map-view__overlay" aria-hidden="true" />
 
@@ -48,4 +52,3 @@ function MapView({
 }
 
 export default MapView;
-
