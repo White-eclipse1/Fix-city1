@@ -1,9 +1,10 @@
-import { ClipboardList, FilePlus, Map, User } from 'lucide-react';
+import { ClipboardList, FilePlus, Gift, Map, User } from 'lucide-react';
 
 const NAV_ITEMS = [
   { id: 'map', label: 'Mapa', icon: Map },
   { id: 'report', label: 'Reportar', icon: FilePlus },
   { id: 'reports', label: 'Mis Reportes', icon: ClipboardList },
+  { id: 'rewards', label: 'Rewards', icon: Gift },
   { id: 'profile', label: 'Perfil', icon: User },
 ];
 

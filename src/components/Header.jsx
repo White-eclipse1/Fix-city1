@@ -5,6 +5,7 @@ function Header({ activeTab, onOpenProfile }) {
     map: 'Mapa urbano',
     report: 'Nuevo reporte',
     reports: 'Seguimiento',
+    rewards: 'Rewards',
     profile: 'Perfil ciudadano',
   };
 

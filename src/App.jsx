@@ -6,6 +6,7 @@ import MapView from './components/MapView';
 import ReportSheet from './components/ReportSheet';
 import ReportCard from './components/ReportCard';
 import ProfileView from './components/ProfileView';
+import RewardsView from './components/RewardsView';
 import FloatingActionButton from './components/FloatingActionButton';
 import { initialPins, initialReports, pinDropSlots } from './data/mockReports';
 import { reportTypes } from './data/reportTypes';
@@ -14,6 +15,7 @@ const TABS = {
   MAP: 'map',
   REPORT: 'report',
   REPORTS: 'reports',
+  REWARDS: 'rewards',
   PROFILE: 'profile',
 };
 
@@ -161,6 +163,12 @@ function App() {
               <ProfileView />
             </section>
           )}
+
+          {activeTab === TABS.REWARDS && (
+            <section className="screen screen--scroll" key="rewards">
+              <RewardsView />
+            </section>
+          )}
         </main>
 
         <FloatingActionButton
@@ -182,4 +190,3 @@ function App() {
 }
 
 export default App;
-
