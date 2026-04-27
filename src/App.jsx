@@ -88,8 +88,6 @@ function App() {
       <div className="page-shell__glow page-shell__glow--right" />
 
       <div className="mobile-app">
-        <div className="mobile-app__notch" />
-
         <Header
           activeTab={activeTab}
           onOpenProfile={() => handleTabChange(TABS.PROFILE)}

@@ -97,18 +97,6 @@ button {
   overflow: hidden;
 }
 
-.mobile-app__notch {
-  width: 120px;
-  height: 22px;
-  border-radius: 0 0 18px 18px;
-  background: rgba(15, 23, 42, 0.9);
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
-}
-
 .app-header {
   position: relative;
   z-index: 3;
@@ -116,7 +104,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 2.1rem 1.1rem 1rem;
+  padding: 1rem 1.1rem;
 }
 
 .app-header__brand {
