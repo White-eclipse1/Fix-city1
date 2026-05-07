@@ -52,7 +52,7 @@ function RewardsView() {
     <div className="rewards-view">
       <section className="rewards-hero">
         <div className="rewards-hero__copy">
-          <span className="section-intro__eyebrow">Fix City Rewards</span>
+          <span className="section-intro__eyebrow">Mi Ciudad Rewards</span>
           <h2>Participar tambien suma para tu ciudad</h2>
           <p>
             Gana puntos por reportar, validar y dar seguimiento a infraestructura urbana.

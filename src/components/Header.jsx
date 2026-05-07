@@ -17,7 +17,7 @@ function Header({ activeTab, onOpenProfile }) {
         </div>
         <div>
           <div className="app-header__title-row">
-            <h1>Fix City</h1>
+            <h1>Mi Ciudad</h1>
             <span>{tabLabels[activeTab]}</span>
           </div>
           <p>Reporta y Mejora tu Ciudad</p>

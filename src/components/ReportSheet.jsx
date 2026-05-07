@@ -1,19 +1,34 @@
 import {
+  Ban,
   Camera,
   Droplets,
+  Hammer,
+  Home,
+  Leaf,
   Lightbulb,
   MapPin,
-  Signal,
+  PawPrint,
+  PencilLine,
   Trash2,
-  TriangleAlert,
+  Trees,
+  Truck,
+  Waves,
+  Wrench,
 } from 'lucide-react';
 
 const ICONS = {
-  bache: TriangleAlert,
-  luminaria: Lightbulb,
-  agua: Droplets,
-  semaforo: Signal,
-  basura: Trash2,
+  luminarias: Lightbulb,
+  'fugas-agua': Droplets,
+  'falta-agua': Ban,
+  'animales-calle': PawPrint,
+  'basura-domiciliaria': Trash2,
+  'via-publica': Truck,
+  'baches-pavimentacion': Wrench,
+  ramas: Leaf,
+  'parques-jardines': Trees,
+  descacharrizacion: Home,
+  desazolve: Waves,
+  otros: PencilLine,
 };
 
 const URGENCY_LEVELS = ['baja', 'media', 'alta'];
@@ -25,10 +40,14 @@ function ReportSheet({
   location,
   description,
   onDescriptionChange,
+  customCategory,
+  onCustomCategoryChange,
   urgency,
   onUrgencyChange,
   onSubmit,
 }) {
+  const isCustomCategory = selectedCategory === 'otros';
+
   return (
     <div className="report-sheet">
       <div className="report-sheet__handle" />
@@ -45,7 +64,7 @@ function ReportSheet({
         <label className="field-label">Categoría</label>
         <div className="category-grid">
           {reportTypes.map((type) => {
-            const Icon = ICONS[type.id];
+            const Icon = ICONS[type.id] ?? Hammer;
             const isActive = type.id === selectedCategory;
 
             return (
@@ -68,6 +87,23 @@ function ReportSheet({
         </div>
       </div>
 
+      {isCustomCategory && (
+        <div className="report-sheet__group">
+          <label className="field-label" htmlFor="custom-report-type">
+            Tipo de reporte personalizado
+          </label>
+          <input
+            id="custom-report-type"
+            className="field-input"
+            type="text"
+            placeholder="Ej. Poste caído, ruido excesivo, lote abandonado"
+            value={customCategory}
+            onChange={(event) => onCustomCategoryChange(event.target.value)}
+            maxLength={70}
+          />
+        </div>
+      )}
+
       <div className="report-sheet__group">
         <label className="field-label">Ubicación actual</label>
         <div className="field-card">
@@ -83,7 +119,11 @@ function ReportSheet({
         <textarea
           id="report-description"
           className="report-textarea"
-          placeholder="Ej. El semáforo no cambia a verde desde hace varios minutos."
+          placeholder={
+            isCustomCategory
+              ? 'Describe el reporte personalizado con el mayor detalle posible.'
+              : 'Ej. La luminaria no enciende desde hace varias noches.'
+          }
           value={description}
           onChange={(event) => onDescriptionChange(event.target.value)}
           rows={4}
@@ -125,4 +165,3 @@ function ReportSheet({
 }
 
 export default ReportSheet;
-

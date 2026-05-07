@@ -515,6 +515,14 @@ button {
     background-color 0.22s ease;
 }
 
+.category-card > span:last-child {
+  min-width: 0;
+  font-size: 0.84rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
 .category-card--active {
   background: color-mix(in srgb, var(--category-accent) 14%, white);
   border-color: color-mix(in srgb, var(--category-accent) 46%, white);
@@ -534,11 +542,18 @@ button {
 
 .field-card,
 .upload-card,
+.field-input,
 .report-textarea {
   width: 100%;
   border-radius: 18px;
   background: rgba(239, 248, 252, 0.88);
   border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.field-input {
+  height: 52px;
+  padding: 0 1rem;
+  color: var(--text-main);
 }
 
 .field-card,
@@ -568,6 +583,7 @@ button {
 }
 
 .report-textarea:focus,
+.field-input:focus,
 .category-card:focus-visible,
 .urgency-pill:focus-visible,
 .primary-button:focus-visible,

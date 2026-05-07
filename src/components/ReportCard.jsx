@@ -5,7 +5,7 @@ const TRACKING_STEPS = [
   {
     id: 'enviado',
     label: 'Reporte enviado',
-    detail: 'Tu incidencia ya esta registrada en Fix City.',
+    detail: 'Tu incidencia ya esta registrada en Mi Ciudad.',
   },
   {
     id: 'aceptado',

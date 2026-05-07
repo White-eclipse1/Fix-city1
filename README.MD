@@ -1,6 +1,6 @@
-# Fix City - Frontend Demo
+# Mi Ciudad - Frontend Demo
 
-Fix City es una web app frontend mobile-first inspirada en una app de reportes ciudadanos. La interfaz simula una app movil dentro del navegador e incluye mapa, formulario de reporte, seguimiento de incidencias y perfil de usuario.
+Mi Ciudad es una web app frontend mobile-first inspirada en una app de reportes ciudadanos. La interfaz simula una app movil dentro del navegador e incluye mapa, formulario de reporte, seguimiento de incidencias y perfil de usuario.
 
 ## Tecnologias
 

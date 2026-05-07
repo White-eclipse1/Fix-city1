@@ -24,6 +24,7 @@ const CURRENT_LOCATION = 'Av. Chapultepec 52';
 function App() {
   const [activeTab, setActiveTab] = useState(TABS.MAP);
   const [selectedCategory, setSelectedCategory] = useState(reportTypes[0].id);
+  const [customCategory, setCustomCategory] = useState('');
   const [urgency, setUrgency] = useState('media');
   const [description, setDescription] = useState(
     'Luminaria intermitente y poca visibilidad por las noches.',
@@ -32,7 +33,12 @@ function App() {
   const [pins, setPins] = useState(initialPins);
   const [toast, setToast] = useState('');
 
-  const activeCategory = reportTypes.find((item) => item.id === selectedCategory);
+  const activeCategory =
+    reportTypes.find((item) => item.id === selectedCategory) ?? reportTypes[0];
+  const focusCategoryLabel =
+    activeCategory.id === 'otros'
+      ? customCategory.trim() || activeCategory.label
+      : activeCategory.label;
 
   useEffect(() => {
     if (!toast) {
@@ -48,7 +54,16 @@ function App() {
   };
 
   const handleSubmitReport = () => {
+    const customCategoryName = customCategory.trim();
+    const isCustomCategory = activeCategory.id === 'otros';
+
+    if (isCustomCategory && !customCategoryName) {
+      setToast('Escribe el tipo de reporte personalizado.');
+      return;
+    }
+
     const slot = pinDropSlots[pins.length % pinDropSlots.length];
+    const reportCategory = isCustomCategory ? customCategoryName : activeCategory.label;
     const today = new Intl.DateTimeFormat('es-MX', {
       day: '2-digit',
       month: 'short',
@@ -58,7 +73,7 @@ function App() {
     // Todo es mock: simulamos crear el reporte localmente para una demo más realista.
     const newReport = {
       id: `RPT-${100 + reports.length + 1}`,
-      category: activeCategory.label,
+      category: reportCategory,
       location: CURRENT_LOCATION,
       date: today,
       status: 'Pendiente',
@@ -70,13 +85,14 @@ function App() {
     setPins((current) => [
       {
         id: `pin-${Date.now()}`,
-        category: activeCategory.label,
+        category: reportCategory,
         color: activeCategory.accent,
         ...slot,
       },
       ...current,
     ]);
     setDescription('');
+    setCustomCategory('');
     setUrgency('media');
     setToast('Reporte enviado con éxito. Se agregó a Mis Reportes.');
     startTransition(() => setActiveTab(TABS.REPORTS));
@@ -119,7 +135,7 @@ function App() {
                 pins={pins}
                 showFocusPin
                 focusColor={activeCategory.accent}
-                focusLabel={activeCategory.label}
+                focusLabel={focusCategoryLabel}
               />
               <ReportSheet
                 reportTypes={reportTypes}
@@ -128,6 +144,8 @@ function App() {
                 location={CURRENT_LOCATION}
                 description={description}
                 onDescriptionChange={setDescription}
+                customCategory={customCategory}
+                onCustomCategoryChange={setCustomCategory}
                 urgency={urgency}
                 onUrgencyChange={setUrgency}
                 onSubmit={handleSubmitReport}
